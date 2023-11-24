@@ -1,0 +1,38 @@
+<main>
+    @if (loading) {
+    <section class="loading-section">
+        <h1>Loading...</h1>
+    </section>
+    } @else {
+    <div class="topGrid">
+        <div>
+            <img src={{data.hero.url}} alt="" width="400" height="400" class="radius" />
+        </div>
+        @for (json of breed; track breed.id) {
+        <section>
+            <h1>{{json.name}}</h1>
+            <p class="description">{{json.description}}</p>
+            <h2>Termperament: {{json.temperament}}</h2>
+            <h2>Origin: {{json.origin}}</h2>
+            <h2>Life Span: {{json.life_span}} years</h2>
+            <h2 class="bubbleGrid">Adaptability: <app-bubble [count]="json.adaptability" /></h2>
+            <h2 class="bubbleGrid">Affection Level: <app-bubble [count]="json.affection_level" /></h2>
+            <h2 class="bubbleGrid">Child Friendly: <app-bubble [count]="json.child_friendly" /></h2>
+            <h2 class="bubbleGrid">Grooming: <app-bubble [count]="json.grooming" /></h2>
+            <h2 class="bubbleGrid">Intelligence: <app-bubble [count]="json.intelligence" /></h2>
+            <h2 class="bubbleGrid">Health Issues: <app-bubble [count]="json.health_issues" /></h2>
+            <h2 class="bubbleGrid">Social Needs: <app-bubble [count]="json.social_needs" /></h2>
+            <h2 class="bubbleGrid">Stranger Friendly: <app-bubble [count]="json.stranger_friendly" /></h2>
+        </section>
+        }
+    </div>
+    <section>
+        <h3 class="fs35">Other Images</h3>
+        <div class="otherImagesGrid">
+            @for (image of data.images; track data.images.id) {
+            <img src={{image.url}} alt="" width="400" height="400" class="radius" />
+            }
+        </div>
+    </section>
+    }
+</main>

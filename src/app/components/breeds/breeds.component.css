@@ -1,0 +1,28 @@
+.heading {
+    margin: 50px 20px;
+}
+
+.breedGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: start;
+    gap: 50px 100px;
+    font-size: 25px;
+}
+
+/* Problem with underline and if you change color -> underline will mismatch */
+.breed {
+    text-underline-position: under;
+    cursor: pointer;
+}
+
+.main {
+    margin-block-end: 50px;
+}
+
+@media (max-width: 800px) {
+    .breedGrid {
+        grid-template-columns: 1fr 1fr;
+        gap: 50px 20px;
+    }
+}

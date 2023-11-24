@@ -1,0 +1,10 @@
+<main class="main">
+    <h1 class="heading">All Cat Breeds</h1>
+    <ul class="breedGrid">
+        @for (breed of breeds; track breed) {
+        <li class="breed">
+            <a [routerLink]="['/breed/'+breed]">{{ breed }}</a>
+        </li>
+        }
+    </ul>
+</main>

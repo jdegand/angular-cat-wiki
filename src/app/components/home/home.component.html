@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="searchDiv">
+        <picture class="bgImage">
+            <source media="(min-width: 1400px)" srcset="../../../assets/images/HeroImage-lg.png">
+            <source media="(min-width: 768px)" srcset="../../../assets/images/HeroImage-md.png">
+            <img src="../../../assets/images/HeroImage-sm.png">
+        </picture>
+        <img class="logo-white" src="../../../assets/images/CatwikiLogoWhite.svg" alt="" />
+        <h1 class="searchDiv-h1">Get to know more about your cat breed</h1>
+        <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+            <div class="floatingGroup">
+                <input type="text" class="searchInput" id="search" name="search" maxlength="35" ngModel required
+                    (focus)="toggleChange()" />
+                <label class="floatingLabel" for="search">Enter your breed</label>
+                <button type="submit" class="searchBtn" aria-label="Search" title="Search">
+                    <img src="../../../assets/images/magnify.svg" alt="Search" width="24" height="24" />
+                </button>
+            </div>
+        </form>
+        @if(form.value.search && toggle){
+        <app-suggestions [searchTerm]="form.value.search" [breeds]="breeds" [handleSuggestion]="handleSuggestion" />
+        }
+    </div>
+    <section class="breedSection">
+        <p>Most Searched Breeds</p>
+        <div class="brownLine"></div>
+        <div class="discoverBreeds">
+            <h2 class="fs48">66+ Breeds For you to discover</h2>
+            <a routerLink="/breeds">SEE MORE <span>&rarr;</span></a>
+        </div>
+        <div class="breedFlex">
+            @for (breed of featuredBreads; let first = $first; track breed.id) {
+            <a [routerLink]="['/breed/'+breed.name]">
+                <div class="breedDiv">
+                    <img [ngClass]="first ? 'contain' : 'cover'" class="breedImage" src={{breed.image.url}} alt="" />
+                    <div>{{breed.name}}</div>
+                </div>
+            </a>
+            }@empty {
+            <p>Error: Fetching top breeds</p>
+            }
+        </div>
+    </section>
+    <section class="shouldSection">
+        <div class="padding125">
+            <div class="brownLine"></div>
+            <h2 class="fs48">Why should you have a cat?</h2>
+            <p>Having a cat around you can actually trigger the release of calming chemicals in your body which lower
+                your stress and anxiety levels.</p>
+            <a routerLink="/benefits">READ MORE <span>&rarr;</span></a>
+        </div>
+        <div class="imageGrid">
+            <div class="image1">
+                <img src="../../../assets/images/image-2.png" alt="" width="400" height="200" />
+            </div>
+            <div class="image2">
+                <img src="../../../assets/images/image-3.png" alt="" width="200" height="450" />
+            </div>
+            <div class="image3">
+                <img src="../../../assets/images/image-1.png" alt="" width="300" height="400" />
+            </div>
+        </div>
+    </section>
+</div>

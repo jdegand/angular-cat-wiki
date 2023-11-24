@@ -1,0 +1,110 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+}
+
+a {
+    color: black;
+    text-decoration-skip-ink: auto;
+}
+
+img,
+picture {
+    max-width: 100%;
+    display: block;
+    object-fit: contain;
+    /*preserve aspect ratio */
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    border: 0;
+}
+
+span {
+    pointer-events: none;
+    /* Image tag wrapper - the background image even with negative image gets wrapped in a span that blocks clicks */
+    /* Not relevant in this version ? */
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    width: 1em;
+    height: 1em
+}
+
+::-webkit-scrollbar-button {
+    background: #e0e0e0
+}
+
+::-webkit-scrollbar-track-piece {
+    background: #e0e0e0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #544439;
+}

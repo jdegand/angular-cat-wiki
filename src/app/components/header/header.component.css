@@ -1,0 +1,11 @@
+ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+.cat-wiki-logo {
+    width:128px;
+    height:43px;
+}

@@ -1,0 +1,7 @@
+<div class="modal">
+  <ul>
+    @for (breed of matchedBreeds; track breed) {
+    <li class="pointer" (click)="handleClick($event)">{{ breed }}</li>
+    }
+  </ul>
+</div>

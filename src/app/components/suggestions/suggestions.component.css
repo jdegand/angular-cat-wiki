@@ -1,0 +1,18 @@
+.modal {
+    background: #fff;
+    border-radius: 20px;
+    color: black;
+    height: 150px;
+    overflow-y: scroll;
+    width: 200px;
+    padding: 0;
+    margin: 20px 0;
+    line-height: 2;
+    position: absolute;
+    top: 55%;
+    left: 3%;
+}
+
+.breed {
+    cursor: pointer;
+}
