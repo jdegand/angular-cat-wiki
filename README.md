@@ -45,6 +45,21 @@ This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devcha
 
 ## How to Use
 
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+
+```bash
+# Clone this repository
+$ git clone https://github.com/jdegand/angular-cat-wiki.git
+
+# Install dependencies
+$ npm install
+
+# Need to add / update environment.development.ts file with an apiKey from thecatapi
+
+# Run the app and navigate to localhost:4200
+$ npm start
+```
+
 - Need to add / update environment.development.ts file 
 
 ```javascript
