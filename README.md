@@ -60,7 +60,7 @@ $ npm install
 $ npm start
 ```
 
-- Need to add / update environment.development.ts file 
+### Need to add / update environment.development.ts file 
 
 ```javascript
 export const environment = {

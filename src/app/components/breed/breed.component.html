@@ -6,7 +6,7 @@
     } @else {
     <div class="topGrid">
         <div>
-            <img src={{data.hero.url}} alt="" width="400" height="400" class="radius" />
+            <img src={{data.hero.url}} alt="" width="400" height="400" class="radius">
         </div>
         @for (json of breed; track breed.id) {
         <section>
@@ -30,7 +30,7 @@
         <h3 class="fs35">Other Images</h3>
         <div class="otherImagesGrid">
             @for (image of data.images; track data.images.id) {
-            <img src={{image.url}} alt="" width="400" height="400" class="radius" />
+            <img src={{image.url}} alt="" width="400" height="400" class="radius">
             }
         </div>
     </section>

@@ -153,8 +153,8 @@ input:valid+.floatingLabel {
 
 .absolute {
     position: absolute;
-    top: 10;
-    left: 10;
+    top: 10px;
+    left: 10px;
 }
 
 .marginBlock {
@@ -332,6 +332,6 @@ form {
     }
 
     .logo-white {
-        top: 0;
+        top: 0px;
     }
 }
