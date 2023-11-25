@@ -21,6 +21,7 @@ export class BreedComponent {
   title = inject(Title);
 
   data: any;
+  filteredImages: any;
 
   httpService = inject(ApiHttpClientService)
 
@@ -39,6 +40,7 @@ export class BreedComponent {
     ).subscribe(response => {
       this.data = response;
       this.loading = false;
+      this.filteredImages = Array.from(new Set(this.data.images.map((el: any) => el.url).filter((el: any) => el !== this.data.hero.url).filter((el: any) => el !== this.data.hero.url)));
     })
   }
 

@@ -29,8 +29,8 @@
     <section>
         <h3 class="fs35">Other Images</h3>
         <div class="otherImagesGrid">
-            @for (image of data.images; track data.images.id) {
-            <img src={{image.url}} alt="" width="400" height="400" class="radius">
+            @for (image of filteredImages; track image) {
+            <img src={{image}} alt="" width="400" height="400" class="radius">
             }
         </div>
     </section>

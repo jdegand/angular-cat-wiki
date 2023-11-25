@@ -29,6 +29,7 @@ This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devcha
 - NgOptimizedImage seems very similar to Next's Legacy Image.  A lot of the same attributes carry over.   
 - In the Next version, I used Image with `HeroImage-md.png`.  I could do the same with NgOptimizedImage but right now I used a picture tag with the multiple images for different screen sizes.
 - HeroImage div width is too short on very large screens.  
+- Ragdoll and Norwegian Forest Cat are good breeds to test image filtering.  Ragdoll has enough pictures where you can refresh many times and if I there are only 5 bottom images, then the duplicate of the main image is gone.  This doesn't account for duplicates in the extra images themselves.  You need to convert the array to a set and then convert back to an array to eliminate duplicates from extra images array.  The catapi is aware of duplicate images but not much work has been done on the api in a while. 
 
 ## Continued Development
 
