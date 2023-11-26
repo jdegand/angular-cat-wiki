@@ -12,24 +12,24 @@ This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devcha
 
 - Fetch seems to be preferred in Angular 17.
 - NG02801: Angular detected that `HttpClient` is not configured to use `fetch` APIs. It's strongly recommended to enable `fetch` for applications that use Server-Side Rendering for better performance and compatibility. To enable `fetch`, add the `withFetch()` to the `provideHttpClient()` call at the root of the application.
-- Observables are discouraged for simple api requests now.  Observables are better when you need to transform data but most of the time you just serve what the api returns.  And it is more performant to optimize the backend to return the json you need versus manipulating returned json data.  
-- SSR seems easy to setup and requires less intervention by developers.  You don't have add the express engine separately anymore.    
+- Observables are discouraged for simple API requests now.  Observables are better when you need to transform data but most of the time you just serve what the API returns.  And it is more performant to optimize the backend to return the JSON you need versus manipulating returned JSON data.  
+- SSR seems easy to setup and requires less intervention by developers.  You don't have to add the express engine separately anymore.    
 - SSR documentation is pretty scarce.  [Angular.io's SSR guide](https://angular.io/guide/ssr) removed the older Angular Universal implementation details.   
-- I found Next to be a way better option for SSR in the past to bother much with Angular SSR.  If you knew both, there would have been few reasons to pick Angular over Next.  Now, I think this is good enough to stick with Angular versus converting to another framework. 
-- I used mergeMap and forkJoin to batch the api requests in the breed component.
+- I found Next to be a way better option for SSR than Angular SSR.  If you knew both, there would have been few reasons to pick Angular over Next.  Now, I think this is good enough to stick with Angular versus converting to another framework. 
+- I used mergeMap and forkJoin to batch the API requests in the breed component.
 - Chaining multiple sequential fetch requests is not better than using RxJs. 
-- The row of images on the Breed page have a large intrisnic size.  This is api-specific and don't think I can do much to mitigate this.  I need to make sure of aspect ratio of all the images.  
-- There is some slight styling issues from the conversion.  There is unused CSS code lingering in some files.  I was able to keep most of the html formatting in the conversion and only had to make slight alterations.  I used the new control flow syntax.  
-- I removed Karma, Jasmine and any generated test files.  I think Cypress would probably the quickest option to get testing done quickly.  Cypress 13.5 supports Angular 17 component testing. 
-- I used `object-fit: contain` globally for all images to preserve aspect ratio of photos.  It is not ideal as it can make layout look less uniform but the pictures look much better.  
-- I looked into hiding the api key versus adding it inside the environments folder.  This is something that Next does better than Angular.  There is very little documentation about hiding api keys and SSR in Angular.  I looked into adding a plugin for dotenv and adding an .env file which holds the key that is referenced inside the environments file. 
+- Images have a large intrisnic size.  This is api-specific and don't think I can do much to mitigate it.
+- There are some slight styling issues from the conversion.  There is unused CSS code lingering in some files.  I was able to keep most of the HTML formatting in the conversion and only had to make slight alterations.  I used the new control flow syntax.  
+- I removed Karma, Jasmine and any generated test files.  I think Cypress would probably be the quickest option to get testing done quickly.  Cypress 13.5 supports Angular 17 component testing. 
+- I used `object-fit: contain` globally for all images to preserve the aspect ratio.  It is not ideal, as it can make the layout look less uniform, but the pictures look much better.  
+- I looked into hiding the API key versus adding it inside the environments folder.  This is something that Next does better than Angular.  There is very little documentation about hiding API keys and SSR in Angular.  I looked into adding a plugin for dotenv and adding an .env file which holds the key that is referenced inside the environments file. 
 - `@angular-builders/custom-webpack` has been updated for Angular 17 but `dotenv-webpack` has not been updated in a while.  I need to investigate more.  
-- Since I only needed one input, I used ngModel and didn't save state in the home component.  At times, I second guessed this choice as there was issues with modal functionality.  I didn't have as easy access to the input value to pass to the modal component.
+- Since I only needed one input, I used ngModel and didn't save state in the home component.  At times, I second-guessed this choice as there were issues with modal functionality.  I didn't have as easy access to the input value to pass to the modal component.
 - If you make the arrow html entities bigger with font-size, you will have a mismatched underline of the link.  
 - NgOptimizedImage seems very similar to Next's Legacy Image.  A lot of the same attributes carry over.   
-- In the Next version, I used Image with `HeroImage-md.png`.  I could do the same with NgOptimizedImage but right now I used a picture tag with the multiple images for different screen sizes.
+- In the Next version, I used Image with `HeroImage-md.png`.  I could do the same with NgOptimizedImage but right now I use a picture tag with the multiple images for different screen sizes.
 - HeroImage div width is too short on very large screens.  
-- Ragdoll and Norwegian Forest Cat are good breeds to test image filtering.  Ragdoll has enough pictures where you can refresh many times and if I there are only 5 bottom images, then the duplicate of the main image is gone.  This doesn't account for duplicates in the extra images themselves.  You need to convert the array to a set and then convert back to an array to eliminate duplicates from extra images array.  The catapi is aware of duplicate images but not much work has been done on the api in a while. 
+- Ragdoll and Norwegian Forest Cat are good breeds to test image filtering.  Ragdoll has enough pictures where you can refresh many times, and if there are only 5 bottom images, then the duplicate of the main image is gone.  This doesn't account for duplicates in the extra images themselves.  You need to convert the array to a set and then convert back to an array to eliminate duplicates from the extra images array.  The catapi is aware of duplicates, but not much work has been done on the api in a while. 
 
 ## Continued Development
 
@@ -37,11 +37,10 @@ This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devcha
 - Accessibility 
 - Focus management after navigation - [See angular.dev for more](https://angular.dev/best-practices/a11y)
 - Better way to hide api key
-- File Structure
+- File Structure - pages folder?
 - Tests (Cypress)
 - Performance 
 - Typescript -> interfaces matching the api responses
-- Ragmuffin: the main hero image is repeated in the other images pictures.  I ran a check for this in the Next version to exclude duplicate images.
 - NgOptimizedImage for the main hero image ?
 
 ## How to Use
