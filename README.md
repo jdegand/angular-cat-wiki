@@ -30,6 +30,7 @@ This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devcha
 - In the Next version, I used Image with `HeroImage-md.png`.  I could do the same with NgOptimizedImage but right now I use a picture tag with the multiple images for different screen sizes.
 - HeroImage div width is too short on very large screens.  
 - Ragdoll and Norwegian Forest Cat are good breeds to test image filtering.  Ragdoll has enough pictures where you can refresh many times, and if there are only 5 bottom images, then the duplicate of the main image is gone.  This doesn't account for duplicates in the extra images themselves.  You need to convert the array to a set and then convert back to an array to eliminate duplicates from the extra images array.  The catapi is aware of duplicates, but not much work has been done on the api in a while. 
+- Have to use `sourceMap:false` in `tsconfig.json` for Cypress test to run.  Otherwise, you need to add another tsconfig file inside the cypress folder.  This is a recurring problem / necessary step for Cypress testing.  
 
 ## Continued Development
 
@@ -87,3 +88,12 @@ export const environment = {
 - [YouTube](https://www.youtube.com/watch?v=FdsGA2HFBQc) - Part 6 Angular 12 Intercept @Input using ngOnChanges | Getters and Setters - Learn from Scratch
 - [Medium](https://medium.com/@7hwyl/how-to-pass-a-function-to-a-child-component-in-angular-719fc3d1ee90) - how to pass a function to a child component
 - [Stack Overflow](https://stackoverflow.com/questions/37093432/angular-2-template-driven-form-access-ngform-in-component) - angular 2 template driven form access ngForm in component
+- [Testing Angular](https://testing-angular.com/end-to-end-testing/) - end to end testing
+- [Blog](https://kgajera.com/blog/end-to-end-testing-for-angular-universal/) - end to end testing for angular universal
+- [Github](https://github.com/9elements/angular-flickr-search) - angular flickr search
+- [Stack Overflow](https://stackoverflow.com/questions/53203233/asserting-that-an-input-element-contains-a-specific-value-in-cypress) - asserting that an input element contains a specific value in cypress
+- [Stack Overflow](https://stackoverflow.com/questions/75482195/intercepting-third-party-calls-in-cypress) - intercepting third party calls in cypress
+- [Stack Overflow](https://stackoverflow.com/questions/69778215/cy-intercept-for-post-endpoints-with-query-parameters) - cy intercept for post endpoints with query parameters
+- [Stack Overflow](https://stackoverflow.com/questions/65014050/cy-intercept-not-stubbing-api-in-cypress) - cy intercept not stubbing api in cypress
+- [Cypress](https://www.cypress.io/blog/2019/12/23/asserting-network-calls-from-cypress-tests) - asserting network calls from cypress tests
+- [Blog](https://glebbahmutov.com/blog/ssr-e2e/) - ssr e2e

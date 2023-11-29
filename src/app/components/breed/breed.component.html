@@ -30,7 +30,7 @@
         <h3 class="fs35">Other Images</h3>
         <div class="otherImagesGrid">
             @for (image of filteredImages; track image) {
-            <img src={{image}} alt="" width="400" height="400" class="radius">
+            <img data-cy="otherImage" src={{image}} alt="" width="400" height="400" class="radius">
             }
         </div>
     </section>
