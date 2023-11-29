@@ -14,13 +14,19 @@ This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devcha
 - NG02801: Angular detected that `HttpClient` is not configured to use `fetch` APIs. It's strongly recommended to enable `fetch` for applications that use Server-Side Rendering for better performance and compatibility. To enable `fetch`, add the `withFetch()` to the `provideHttpClient()` call at the root of the application.
 - Observables are discouraged for simple API requests now.  Observables are better when you need to transform data but most of the time you just serve what the API returns.  And it is more performant to optimize the backend to return the JSON you need versus manipulating returned JSON data.  
 - SSR seems easy to setup and requires less intervention by developers.  You don't have to add the express engine separately anymore.    
-- SSR documentation is pretty scarce.  [Angular.io's SSR guide](https://angular.io/guide/ssr) removed the older Angular Universal implementation details.   
+- SSR documentation is pretty scarce.  [Angular.io's SSR guide](https://angular.io/guide/ssr) removed the older Angular Universal implementation details.  
+- I have two services to fetch the same data.  If you use the `AppHttpClientService`, the data you fetch will be included in the page source code on first load.  If you use `ApiHandlerService`, the data will be hydrated into the page and the data will be missing from the initial source code.  `Error: fetching top breeds` will be in the source code instead.  
+- The fact that the images of the breed images is close to the fold makes the choice between the two approaches more difficult.  It is less important that the breed images be fetched immediately.  On a fast connection, the images will probably be hydrated into the dom before the user has scrolled them into the viewport.  
+- Filtering the breeds to get the specific images used in the devchallenges design is different for both approaches as well.
+- If you use localStorage to cache data, you could inject `PLATFORM_ID` and wrap any localStorage code in a conditional that checks `isPlatformBrowser()` or you can check the localStorage inside the callback of `afterNextRender()`.  
 - I found Next to be a way better option for SSR than Angular SSR.  If you knew both, there would have been few reasons to pick Angular over Next.  Now, I think this is good enough to stick with Angular versus converting to another framework. 
 - I used mergeMap and forkJoin to batch the API requests in the breed component.
 - Chaining multiple sequential fetch requests is not better than using RxJs. 
 - Images have a large intrisnic size.  This is api-specific and don't think I can do much to mitigate it.
 - There are some slight styling issues from the conversion.  There is unused CSS code lingering in some files.  I was able to keep most of the HTML formatting in the conversion and only had to make slight alterations.  I used the new control flow syntax.  
 - I removed Karma, Jasmine and any generated test files.  I think Cypress would probably be the quickest option to get testing done quickly.  Cypress 13.5 supports Angular 17 component testing. 
+- I have looked into Cypress end to end testing with SSR and it doesn't seem like cy.intercept will work.  If you use cy.visit instead of cy.render, you can actually think you are testing your SSR application when you are testing the client again.  
+- Once again, there is a distinct lack of documentation out there and I am still doing more research.  Angular Test Library has been updated to test deferred views but I don't know if it has any testing examples for SSR.  
 - I used `object-fit: contain` globally for all images to preserve the aspect ratio.  It is not ideal, as it can make the layout look less uniform, but the pictures look much better.  
 - I looked into hiding the API key versus adding it inside the environments folder.  This is something that Next does better than Angular.  There is very little documentation about hiding API keys and SSR in Angular.  I looked into adding a plugin for dotenv and adding an .env file which holds the key that is referenced inside the environments file. 
 - `@angular-builders/custom-webpack` has been updated for Angular 17 but `dotenv-webpack` has not been updated in a while.  I need to investigate more.  
@@ -42,6 +48,7 @@ This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devcha
 - Performance 
 - Typescript -> interfaces matching the api responses
 - NgOptimizedImage for the main hero image ?
+- Issues with title change -> if you don't use the back arrow, the details title can linger and the homepage's AngularCatWiki title will not be displayed i.e. you used the catwiki logo to go back to the homepage. 
 
 ## How to Use
 
@@ -87,3 +94,6 @@ export const environment = {
 - [YouTube](https://www.youtube.com/watch?v=FdsGA2HFBQc) - Part 6 Angular 12 Intercept @Input using ngOnChanges | Getters and Setters - Learn from Scratch
 - [Medium](https://medium.com/@7hwyl/how-to-pass-a-function-to-a-child-component-in-angular-719fc3d1ee90) - how to pass a function to a child component
 - [Stack Overflow](https://stackoverflow.com/questions/37093432/angular-2-template-driven-form-access-ngform-in-component) - angular 2 template driven form access ngForm in component
+- [YouTube](https://www.youtube.com/watch?v=6LmnC8Y_HZI&t=507s) - Angular Server Side Rendering | Angular SSR | Angular Universal
+- [YouTube](https://www.youtube.com/watch?v=4KH-TStaiGw) - Angular 17 SSR - Angular Server Side Rendering in a New Way
+- [Stack Overflow](https://stackoverflow.com/questions/5072136/javascript-filter-for-objects) - javascript filter for objects

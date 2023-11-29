@@ -29,10 +29,10 @@
             <a routerLink="/breeds">SEE MORE <span>&rarr;</span></a>
         </div>
         <div class="breedFlex">
-            @for (breed of featuredBreads; let first = $first; track breed.id) {
+            @for (breed of featuredBreeds; let first = $first; track breed.id) {
             <a [routerLink]="['/breed/'+breed.name]">
                 <div class="breedDiv">
-                    <img [ngClass]="first ? 'contain' : 'cover'" class="breedImage" src={{breed.image.url}} alt="" />
+                    <img [ngClass]="first ? 'contain' : 'cover'" class="breedImage" src={{breed.image?.url}} alt="" />
                     <div>{{breed.name}}</div>
                 </div>
             </a>
@@ -40,6 +40,20 @@
             <p>Error: Fetching top breeds</p>
             }
         </div>
+        <!--
+        <div class="breedFlex">
+            @for (breed of breeds.slice(0,4); let first = $first; track breed.id) {
+            <a [routerLink]="['/breed/'+breed.name]">
+                <div class="breedDiv">
+                    <img [ngClass]="first ? 'contain' : 'cover'" class="breedImage" src={{breed.image?.url}} alt="" />
+                    <div>{{breed.name}}</div>
+                </div>
+            </a>
+            }@empty {
+            <p>Error: Fetching top breeds</p>
+            }
+        </div>
+        -->
     </section>
     <section class="shouldSection">
         <div class="padding125">
