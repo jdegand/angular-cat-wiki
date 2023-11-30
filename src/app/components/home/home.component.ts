@@ -55,11 +55,11 @@ export class HomeComponent {
     });
     */
    
-    this.apiHttpClientService.fetchBreeds().subscribe((data: any) => {
+    this.apiHttpClientService.fetchBreeds().subscribe((data: Breed[]) => {
       // Using httpClient the breed images will be added to the source code
 
       // I tried to change data's type to Breed[] and it didn't work 
-      // I think I need to change the service's types first 
+      // you need to type your service first
 
       this.breeds = data;
 

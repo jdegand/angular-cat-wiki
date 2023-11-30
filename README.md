@@ -99,3 +99,4 @@ export const environment = {
 - [YouTube](https://www.youtube.com/watch?v=6LmnC8Y_HZI&t=507s) - Angular Server Side Rendering | Angular SSR | Angular Universal
 - [YouTube](https://www.youtube.com/watch?v=4KH-TStaiGw) - Angular 17 SSR - Angular Server Side Rendering in a New Way
 - [Stack Overflow](https://stackoverflow.com/questions/5072136/javascript-filter-for-objects) - javascript filter for objects
+- [PluralSight](https://www.pluralsight.com/guides/how-to-make-type-safe-http-requests-in-angular) - how to make type safe http requests in angular

@@ -1,6 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Breed } from '../interfaces/Breed';
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +13,16 @@ export class ApiHttpClientService {
 
   http = inject(HttpClient)
 
-  fetchBreeds() {
-    return this.http.get(this.base_url + 'breeds', {
+  fetchBreeds(): Observable<Breed[]> {
+    return this.http.get<Breed[]>(this.base_url + 'breeds', {
       headers: {
         "x-api-key": environment.apiKey
       }
     })
   }
 
-  fetchBreed() {
-    return this.http.get(this.base_url + 'breeds', {
+  fetchBreed(): Observable<Breed> {
+    return this.http.get<Breed>(this.base_url + 'breeds', {
       headers: {
         "x-api-key": environment.apiKey
       }
