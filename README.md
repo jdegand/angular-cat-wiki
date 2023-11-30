@@ -17,7 +17,7 @@ This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devcha
 - SSR documentation is pretty scarce.  [Angular.io's SSR guide](https://angular.io/guide/ssr) removed the older Angular Universal implementation details.  
 - I have two services to fetch the same data.  If you use the `AppHttpClientService`, the data you fetch will be included in the page source code on first load.  If you use `ApiHandlerService`, the data will be hydrated into the page and the data will be missing from the initial source code.  `Error: fetching top breeds` will be in the source code instead.  
 - The fact that the images of the breed images is close to the fold (on desktop) makes the choice between the two approaches more difficult.  It is less important that the breed images be fetched immediately.  On a fast connection, the images will probably be hydrated into the DOM before the user has scrolled them into the viewport. 
-- Ultimately, it probably best to just use `ApiHttpClientService` so you don't have to worry about the images visibility on all viewport sizes.   
+- Ultimately, it is probably best to just use the `ApiHttpClientService` so you don't have to worry about the images' visibility on all viewport sizes.   
 - If you use localStorage to cache data, you could inject `PLATFORM_ID` and wrap any localStorage code in a conditional that checks `isPlatformBrowser()` or you can check the localStorage inside the callback of `afterNextRender()`.  
 - I found Next to be a way better option for SSR than Angular SSR.  If you knew both, there would have been few reasons to pick Angular over Next.  Now, I think this is good enough to stick with Angular versus converting to another framework. 
 - I used mergeMap and forkJoin to batch the API requests in the breed component.
@@ -25,17 +25,19 @@ This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devcha
 - Images have a large intrisnic size.  This is api-specific and don't think I can do much to mitigate it.
 - There are some slight styling issues from the conversion.  There is unused CSS code lingering in some files.  I was able to keep most of the HTML formatting in the conversion and only had to make slight alterations.  I used the new control flow syntax.  
 - I removed Karma, Jasmine and any generated test files.  I think Cypress would probably be the quickest option to get testing done quickly.  Cypress 13.5 supports Angular 17 component testing. 
-- I have looked into Cypress end to end testing with SSR and it doesn't seem like cy.intercept will work.  If you use cy.visit instead of cy.render, you can actually think you are testing your SSR application when you are testing the client again.  
+- I have looked into Cypress end to end testing with SSR and it doesn't seem like cy.intercept will work.  If you use cy.visit instead of cy.render, you can actually think you are testing your SSR application when you are testing the client.  
 - Once again, there is a distinct lack of documentation out there and I am still doing more research.  Angular Test Library has been updated to test deferred views but I don't know if it has any testing examples for SSR.  
 - I used `object-fit: contain` globally for all images to preserve the aspect ratio.  It is not ideal, as it can make the layout look less uniform, but the pictures look much better.  
 - I looked into hiding the API key versus adding it inside the environments folder.  This is something that Next does better than Angular.  There is very little documentation about hiding API keys and SSR in Angular.  I looked into adding a plugin for dotenv and adding an .env file which holds the key that is referenced inside the environments file. 
 - `@angular-builders/custom-webpack` has been updated for Angular 17 but `dotenv-webpack` has not been updated in a while.  I need to investigate more.  
 - Since I only needed one input, I used ngModel and didn't save state in the home component.  At times, I second-guessed this choice as there were issues with modal functionality.  I didn't have as easy access to the input value to pass to the modal component.
+- The modal component uses absolute positioning and this creates problems with the modal blocking the input depending on viewport height.  
 - If you make the arrow html entities bigger with font-size, you will have a mismatched underline of the link.  
 - NgOptimizedImage seems very similar to Next's Legacy Image.  A lot of the same attributes carry over.   
 - In the Next version, I used Image with `HeroImage-md.png`.  I could do the same with NgOptimizedImage but right now I use a picture tag with the multiple images for different screen sizes.
 - HeroImage div width is too short on very large screens.  
 - Ragdoll and Norwegian Forest Cat are good breeds to test image filtering.  Ragdoll has enough pictures where you can refresh many times, and if there are only 5 bottom images, then the duplicate of the main image is gone.  This doesn't account for duplicates in the extra images themselves.  You need to convert the array to a set and then convert back to an array to eliminate duplicates from the extra images array.  The catapi is aware of duplicates, but not much work has been done on the api in a while. 
+- If you didn't use the back arrow, the dynamic details title lingered on the homepage.  I injected the title service into the home component to always update the title to `AngularCatWiki` on page load.   
 
 ## Continued Development
 
@@ -48,7 +50,6 @@ This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devcha
 - Performance 
 - Typescript -> interfaces matching the api responses
 - NgOptimizedImage for the main hero image ?
-- Issues with title change -> if you don't use the back arrow, the details title can linger and the homepage's AngularCatWiki title will not be displayed i.e. you used the catwiki logo to go back to the homepage. 
 
 ## How to Use
 

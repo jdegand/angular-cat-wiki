@@ -23,7 +23,7 @@ export class BreedComponent {
   data: any;
   filteredImages: any;
 
-  httpService = inject(ApiHttpClientService)
+  httpService = inject(ApiHttpClientService);
 
   retrieveBreedData(): void {
 
@@ -45,7 +45,7 @@ export class BreedComponent {
   }
 
   ngOnInit() {
-    this.title.setTitle(this.name + " details")
+    this.title.setTitle(this.name + " details");
     this.retrieveBreedData();
   }
 

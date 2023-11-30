@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 //import { ApiHandlerService } from '../../services/api-handler.service';
 import { SuggestionsComponent } from '../suggestions/suggestions.component';
 import { ApiHttpClientService } from '../../services/api-http-client.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +21,8 @@ export class HomeComponent {
   //apiHandlerService = inject(ApiHandlerService);
 
   apiHttpClientService = inject(ApiHttpClientService);
+
+  title = inject(Title);
 
   toggle: boolean = true;
 
@@ -39,6 +42,9 @@ export class HomeComponent {
   }
 
   ngOnInit(): void {
+
+    this.title.setTitle("AngularCatWiki");
+
     /*
     this.apiHandlerService.fetchBreeds().then((data) => {
        // using this approach, the initial loaded source code will show `Error: Fetching top breeds`
@@ -57,11 +63,11 @@ export class HomeComponent {
     })
   }
 
-  router = inject(Router)
+  router = inject(Router);
 
   onSubmit(form: NgForm) {
     if (form.valid) {
-      this.router.navigate(['/breed', form.value.search])
+      this.router.navigate(['/breed', form.value.search]);
     }
   }
 
