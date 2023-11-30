@@ -48,7 +48,7 @@ This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devcha
 - File Structure - pages folder?
 - Tests (Cypress)
 - Performance 
-- Typescript -> interfaces matching the api responses
+- Typescript improvements
 - NgOptimizedImage for the main hero image ?
 
 ## How to Use
@@ -79,6 +79,7 @@ export const environment = {
 
 ## Useful Resources
 
+- [transform.tools](https://transform.tools/json-to-typescript) - json to typescript converter
 - [Reddit](https://www.reddit.com/r/Angular2/comments/15gev39/how_to_make_api_call_from_server_side_instead_of/) - how to make api call from server side
 - [YouTube](https://www.youtube.com/watch?v=lZoRAcoEFOw) - Angular 16 Server Side Rendering and Client Side Rendering - Angular Universal
 - [Angular.dev](https://angular.dev/guide/http/setup#withinterceptorsfromdi) - HttpClient

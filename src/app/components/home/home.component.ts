@@ -6,6 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { SuggestionsComponent } from '../suggestions/suggestions.component';
 import { ApiHttpClientService } from '../../services/api-http-client.service';
 import { Title } from '@angular/platform-browser';
+import { Breed } from '../../interfaces/Breed';
 
 @Component({
   selector: 'app-home',
@@ -16,8 +17,9 @@ import { Title } from '@angular/platform-browser';
 })
 export class HomeComponent {
 
-  breeds: any;
-  featuredBreeds: any;
+  breeds: Breed[] = [];
+  featuredBreeds: Breed[] = [];
+  
   //apiHandlerService = inject(ApiHandlerService);
 
   apiHttpClientService = inject(ApiHttpClientService);
@@ -46,7 +48,7 @@ export class HomeComponent {
     this.title.setTitle("AngularCatWiki");
 
     /*
-    this.apiHandlerService.fetchBreeds().then((data) => {
+    this.apiHandlerService.fetchBreeds().then((data: any) => {
        // using this approach, the initial loaded source code will show `Error: Fetching top breeds`
       this.breeds = data;
       this.featuredBreeds = data.filter(function (element: any) { return ['beng', 'sava', 'norw', 'srex'].indexOf(element.id) != -1 });
@@ -55,11 +57,13 @@ export class HomeComponent {
    
     this.apiHttpClientService.fetchBreeds().subscribe((data: any) => {
       // Using httpClient the breed images will be added to the source code
+
+      // I tried to change data's type to Breed[] and it didn't work 
+      // I think I need to change the service's types first 
+
       this.breeds = data;
 
-      this.featuredBreeds = data.filter((element:any)=> ['beng', 'sava', 'norw', 'srex'].indexOf(element.id) != -1 )
-
-      // to filter solution won't work if you don't add any type for data
+      this.featuredBreeds = data.filter((element:Breed)=> ['beng', 'sava', 'norw', 'srex'].indexOf(element.id) != -1 );
     })
   }
 
