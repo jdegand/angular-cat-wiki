@@ -22,7 +22,11 @@ This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devcha
 - I found Next to be a way better option for SSR than Angular SSR.  If you knew both, there would have been few reasons to pick Angular over Next.  Now, I think this is good enough to stick with Angular versus converting to another framework. 
 - I used mergeMap and forkJoin to batch the API requests in the breed component.
 - Chaining multiple sequential fetch requests is not better than using RxJs. 
+- However, the mergeMap implementation seems to have negative Typescript implications.  The first returned value, `breeds`, gets added to the hero object.  This added data creates the need for extra interfaces or the addition of optional fields to the existing interfaces to type each step of the breed API request.  To prevent having to add extra interfaces, you could also add optional return values for certain fields. 
+- [Diffchecker](https://www.diffchecker.com/text-compare/) is an excellent site that can help you compare and contrast different JSON.  Using this site, you can determine how the various API responses differ. 
+- `Breed2` interface is my catch-all interface to work with the various responses in `breed.component.ts`.       
 - Images have a large intrisnic size.  This is api-specific and don't think I can do much to mitigate it.
+- I disabled the image size warning in the console.  You can remove the provider in `app.config.ts` to see the warning.  
 - There are some slight styling issues from the conversion.  There is unused CSS code lingering in some files.  I was able to keep most of the HTML formatting in the conversion and only had to make slight alterations.  I used the new control flow syntax.  
 - I removed Karma, Jasmine and any generated test files.  I think Cypress would probably be the quickest option to get testing done quickly.  Cypress 13.5 supports Angular 17 component testing. 
 - I have looked into Cypress end to end testing with SSR and it doesn't seem like cy.intercept will work.  If you use cy.visit instead of cy.render, you can actually think you are testing your SSR application when you are testing the client.  
@@ -36,8 +40,9 @@ This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devcha
 - NgOptimizedImage seems very similar to Next's Legacy Image.  A lot of the same attributes carry over.   
 - In the Next version, I used Image with `HeroImage-md.png`.  I could do the same with NgOptimizedImage but right now I use a picture tag with the multiple images for different screen sizes.
 - HeroImage div width is too short on very large screens.  
-- Ragdoll and Norwegian Forest Cat are good breeds to test image filtering.  Ragdoll has enough pictures where you can refresh many times, and if there are only 5 bottom images, then the duplicate of the main image is gone.  This doesn't account for duplicates in the extra images themselves.  You need to convert the array to a set and then convert back to an array to eliminate duplicates from the extra images array.  The catapi is aware of duplicates, but not much work has been done on the api in a while. 
-- If you didn't use the back arrow, the dynamic details title lingered on the homepage.  I injected the title service into the home component to always update the title to `AngularCatWiki` on page load.   
+- `Ragdoll` and `Norwegian Forest Cat` are good breeds to test image filtering.  Ragdoll has enough pictures where you can refresh many times, and if there are only 5 bottom images, then the duplicate of the main image is gone.  This doesn't account for duplicates in the extra images themselves.  You need to convert the array to a set and then convert back to an array to eliminate duplicates from the extra image array.  The catapi is aware of duplicates, but not much work has been done on the api in a while. 
+- The `Aegean` breed has a duplicate picture in the extra image array.  The same photo has a different name.    
+- If you didn't use the back arrow, the dynamic details title lingered on the homepage.  I injected the title service into the home component to always update the title to `AngularCatWiki` on page load.     
 
 ## Continued Development
 

@@ -8,7 +8,7 @@
         <div>
             <img src={{data.hero.url}} alt="" width="400" height="400" class="radius">
         </div>
-        @for (json of breed; track breed.id) {
+        @for (json of breed; track breed) {
         <section>
             <h1>{{json.name}}</h1>
             <p class="description">{{json.description}}</p>

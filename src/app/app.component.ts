@@ -12,5 +12,5 @@ import { FooterComponent } from './components/footer/footer.component';
   styleUrls: ['./app.component.css', '../styles.css']
 })
 export class AppComponent {
-  title = 'angular-cat-wiki';
+
 }
