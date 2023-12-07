@@ -12,10 +12,10 @@ This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devcha
 
 - Fetch seems to be preferred in Angular 17.
 - NG02801: Angular detected that `HttpClient` is not configured to use `fetch` APIs. It's strongly recommended to enable `fetch` for applications that use Server-Side Rendering for better performance and compatibility. To enable `fetch`, add the `withFetch()` to the `provideHttpClient()` call at the root of the application.
-- Observables are discouraged for simple API requests now.  Observables are better when you need to transform data but most of the time you just serve what the API returns.  And it is more performant to optimize the backend to return the JSON you need versus manipulating returned JSON data.  
-- SSR seems easy to setup and requires less intervention by developers.  You don't have to add the express engine separately anymore.    
+- Observables are discouraged for simple API requests now.  Observables are better when you need to transform data or combine multiple requests.  
+- SSR is easy to setup and requires less intervention by developers.  You don't have to add the express engine separately anymore.    
 - SSR documentation is pretty scarce.  [Angular.io's SSR guide](https://angular.io/guide/ssr) removed the older Angular Universal implementation details.  
-- I have two services to fetch the same data.  If you use the `AppHttpClientService`, the data you fetch will be included in the page source code on first load.  If you use `ApiHandlerService`, the data will be hydrated into the page and the data will be missing from the initial source code.  `Error: fetching top breeds` will be in the source code instead.  
+- I have two services to fetch the same data.  If you use the `AppHttpClientService`, the data you fetch will be included in the page source code on first load.  If you use `ApiHandlerService`, the data will be hydrated into the page, but the data will be missing from the initial source code.  `Error: fetching top breeds` will be in the source code instead.  
 - The fact that the images of the breed images is close to the fold (on desktop) makes the choice between the two approaches more difficult.  It is less important that the breed images be fetched immediately.  On a fast connection, the images will probably be hydrated into the DOM before the user has scrolled them into the viewport. 
 - Ultimately, it is probably best to just use the `ApiHttpClientService` so you don't have to worry about the images' visibility on all viewport sizes.   
 - If you use localStorage to cache data, you could inject `PLATFORM_ID` and wrap any localStorage code in a conditional that checks `isPlatformBrowser()` or you can check the localStorage inside the callback of `afterNextRender()`.  
@@ -29,7 +29,7 @@ This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devcha
 - I disabled the image size warning in the console.  You can remove the provider in `app.config.ts` to see the warning.  
 - There are some slight styling issues from the conversion.  There is unused CSS code lingering in some files.  I was able to keep most of the HTML formatting in the conversion and only had to make slight alterations.  I used the new control flow syntax.  
 - I removed Karma, Jasmine and any generated test files.  I think Cypress would probably be the quickest option to get testing done quickly.  Cypress 13.5 supports Angular 17 component testing. 
-- I have looked into Cypress end to end testing with SSR and it doesn't seem like cy.intercept will work.  If you use cy.visit instead of cy.render, you can actually think you are testing your SSR application when you are testing the client.  
+- I have looked into Cypress end to end testing with SSR and it doesn't seem like `cy.intercept` will work.  If you use cy.visit instead of `cy.render`, you can actually think you are testing your SSR application when you are testing the client.  
 - Once again, there is a distinct lack of documentation out there and I am still doing more research.  Angular Test Library has been updated to test deferred views but I don't know if it has any testing examples for SSR.  
 - I used `object-fit: contain` globally for all images to preserve the aspect ratio.  It is not ideal, as it can make the layout look less uniform, but the pictures look much better.  
 - I looked into hiding the API key versus adding it inside the environments folder.  This is something that Next does better than Angular.  There is very little documentation about hiding API keys and SSR in Angular.  I looked into adding a plugin for dotenv and adding an .env file which holds the key that is referenced inside the environments file. 
@@ -38,7 +38,7 @@ This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devcha
 - The modal component uses absolute positioning and this creates problems with the modal blocking the input depending on viewport height.  
 - If you make the arrow html entities bigger with font-size, you will have a mismatched underline of the link.  
 - NgOptimizedImage seems very similar to Next's Legacy Image.  A lot of the same attributes carry over.   
-- In the Next version, I used Image with `HeroImage-md.png`.  I could do the same with NgOptimizedImage but right now I use a picture tag with the multiple images for different screen sizes.
+- In the Next version, I used Image with `HeroImage-md.png`.  I could do the same with NgOptimizedImage, but right now I use a picture tag with the multiple images for different screen sizes.
 - HeroImage div width is too short on very large screens.  
 - `Ragdoll` and `Norwegian Forest Cat` are good breeds to test image filtering.  Ragdoll has enough pictures where you can refresh many times, and if there are only 5 bottom images, then the duplicate of the main image is gone.  This doesn't account for duplicates in the extra images themselves.  You need to convert the array to a set and then convert back to an array to eliminate duplicates from the extra image array.  The catapi is aware of duplicates, but not much work has been done on the api in a while. 
 - The `Aegean` breed has a duplicate picture in the extra image array.  The same photo has a different name.    

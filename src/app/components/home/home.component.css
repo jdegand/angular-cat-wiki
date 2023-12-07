@@ -189,6 +189,11 @@ form {
     object-fit: cover;
 }
 
+.breedSection-h1 {
+    font-size: 20px;
+    font-weight: normal;
+}
+
 @media(max-width: 500px) {
 
     .bgImage {
@@ -278,9 +283,9 @@ form {
     }
 }
 
-@media(max-width:320px){
+@media(max-width:320px) {
     form {
-        left:10px;
+        left: 10px;
     }
 
     .searchDiv-h1 {
