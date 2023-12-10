@@ -9,7 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
   standalone: true,
   imports: [CommonModule, RouterOutlet, RouterModule, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css', '../styles.css']
+  styleUrls: ['../styles.css']
 })
 export class AppComponent {
 

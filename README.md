@@ -44,7 +44,7 @@ This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devcha
 - The `Aegean` breed has a duplicate picture in the extra image array.  The same photo has a different name.    
 - If you didn't use the back arrow, the dynamic details title lingered on the homepage.  I injected the title service into the home component to always update the title to `AngularCatWiki` on page load.     
 - `CommonModule` is no longer imported with components anymore.  The new template syntax doesn't require `CommonModule`.  See [Github for more](https://github.com/angular/angular-cli/commit/7a2823080c61df3515d85f7aa35ee83f57e80e2d).
-- I haven't update the `angular cli` package, but I removed the unused `CommonModule` imports from all components.  I only had to import `NgClass` in the home component.
+- I haven't updated the `angular cli` package, but I removed the unused `CommonModule` imports from all components.  I only had to import `NgClass` in the home component.
 
 ## Continued Development
 
