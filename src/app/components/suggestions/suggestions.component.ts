@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Breed } from '../../interfaces/Breed';
 
 @Component({
   selector: 'app-suggestions',
@@ -10,15 +11,15 @@ import { CommonModule } from '@angular/common';
 })
 export class SuggestionsComponent implements OnChanges {
 
-  matchedBreeds: any;
+  matchedBreeds: string[] = [];
 
-  private _breeds: any;
+  private _breeds: string[] = [];
 
   @Input() searchTerm = '';
 
   @Input() handleSuggestion!: ((event: any) => void);
 
-  @Input() set breeds(json: any[]) {
+  @Input() set breeds(json: Breed[]) {
     this._breeds = json.map(el => el.name.toLowerCase());
   }
 
@@ -27,7 +28,7 @@ export class SuggestionsComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    this.matchedBreeds = this._breeds.filter((name: any) => name.includes(this.searchTerm.toLowerCase()));
+    this.matchedBreeds = this._breeds.filter(name => name.includes(this.searchTerm.toLowerCase()));
   }
 
 }

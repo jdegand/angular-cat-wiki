@@ -5,7 +5,7 @@
     height: 150px;
     overflow-y: scroll;
     width: 200px;
-    padding: 0;
+    padding: 0 20px;
     margin: 20px 0;
     line-height: 2;
     position: absolute;

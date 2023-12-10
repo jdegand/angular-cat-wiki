@@ -6,6 +6,7 @@ import { ApiHttpClientService } from '../../services/api-http-client.service';
 import { forkJoin, map, mergeMap } from 'rxjs';
 import Breed2 from '../../interfaces/Breed2';
 import Image2 from '../../interfaces/Image2';
+import MergeMapResponse from '../../interfaces/MergeMapResponse';
 
 @Component({
   selector: 'app-breed',
@@ -26,7 +27,7 @@ export class BreedComponent {
 
   title = inject(Title);
 
-  data: any;
+  data!: MergeMapResponse;
   filteredImages: string[] = [];
 
   httpService = inject(ApiHttpClientService);
@@ -46,7 +47,7 @@ export class BreedComponent {
     ).subscribe(response => {
       this.data = response;
       this.loading = false;
-      this.filteredImages = Array.from(new Set(this.data.images.map((el: Image2) => el.url).filter((el: Image2) => el !== this.data.hero.url).filter((el: Image2) => el !== this.data.hero.url)));
+      this.filteredImages = Array.from(new Set(this.data.images.map((el: Image2) => el.url).filter(el => el !== this.data.hero.url).filter(el => el !== this.data.hero.url)));
     })
   }
 
