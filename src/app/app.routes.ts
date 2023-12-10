@@ -7,7 +7,7 @@ import { BenefitsComponent } from './components/benefits/benefits.component';
 
 export const routes: Routes = [
     { path: 'breed/:name', component: BreedComponent },
-    { path: 'breeds', component: BreedsComponent },
+    { path: 'breeds', title: 'All Cat Breeds', component: BreedsComponent },
     { path: 'benefits', title: 'Benefits(?) of Cat Ownership', component: BenefitsComponent },
     { path: 'home', component: HomeComponent },
     { path: '', pathMatch: 'full', redirectTo: 'home' },
