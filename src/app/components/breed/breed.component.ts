@@ -1,5 +1,5 @@
 import { Component, Input, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+//import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { BubbleComponent } from '../bubble/bubble.component';
 import { ApiHttpClientService } from '../../services/api-http-client.service';
@@ -11,7 +11,7 @@ import MergeMapResponse from '../../interfaces/MergeMapResponse';
 @Component({
   selector: 'app-breed',
   standalone: true,
-  imports: [CommonModule, BubbleComponent],
+  imports: [BubbleComponent],
   templateUrl: './breed.component.html',
   styleUrl: './breed.component.css'
 })

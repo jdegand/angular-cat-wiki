@@ -1,5 +1,4 @@
 import { Component, ViewChild, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 //import { ApiHandlerService } from '../../services/api-handler.service';
@@ -7,11 +6,12 @@ import { SuggestionsComponent } from '../suggestions/suggestions.component';
 import { ApiHttpClientService } from '../../services/api-http-client.service';
 import { Title } from '@angular/platform-browser';
 import { Breed } from '../../interfaces/Breed';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, SuggestionsComponent],
+  imports: [NgClass, FormsModule, RouterLink, SuggestionsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

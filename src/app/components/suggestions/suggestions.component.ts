@@ -1,11 +1,10 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Breed } from '../../interfaces/Breed';
 
 @Component({
   selector: 'app-suggestions',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './suggestions.component.html',
   styleUrl: './suggestions.component.css',
 })

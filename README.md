@@ -43,6 +43,8 @@ This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devcha
 - `Ragdoll` and `Norwegian Forest Cat` are good breeds to test image filtering.  Ragdoll has enough pictures where you can refresh many times, and if there are only 5 bottom images, then the duplicate of the main image is gone.  This doesn't account for duplicates in the extra images themselves.  You need to convert the array to a set and then convert back to an array to eliminate duplicates from the extra image array.  The catapi is aware of duplicates, but not much work has been done on the api in a while. 
 - The `Aegean` breed has a duplicate picture in the extra image array.  The same photo has a different name.    
 - If you didn't use the back arrow, the dynamic details title lingered on the homepage.  I injected the title service into the home component to always update the title to `AngularCatWiki` on page load.     
+- `CommonModule` is no longer imported with components anymore.  The new template syntax doesn't require `CommonModule`.  See [Github for more](https://github.com/angular/angular-cli/commit/7a2823080c61df3515d85f7aa35ee83f57e80e2d).
+- I haven't update the `angular cli` package, but I removed the unused `CommonModule` imports from all components.  I only had to import `NgClass` in the home component.
 
 ## Continued Development
 
@@ -55,7 +57,6 @@ This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devcha
 - Performance 
 - Typescript improvements
 - NgOptimizedImage for the main hero image ?
-- Remove CommonModule imports -> import just what you use?
 
 ## How to Use
 

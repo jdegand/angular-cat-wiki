@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-benefits',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './benefits.component.html',
   styleUrl: './benefits.component.css'
 })
