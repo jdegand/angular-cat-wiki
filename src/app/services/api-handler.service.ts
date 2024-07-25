@@ -18,16 +18,6 @@ export class ApiHandlerService {
     return data.json() ?? [];
   }
 
-  async fetchBreed() {
-    const data = await fetch(this.base_url + 'breeds', {
-      method: 'GET',
-      headers: {
-        "x-api-key": environment.apiKey
-      }
-    })
-    return data.json() ?? [];
-  }
-
   async getBreedBySearchTerm(searchTerm: string) {
     const data = await fetch(this.base_url + `breeds/search?q=${searchTerm}`, {
       method: 'GET',

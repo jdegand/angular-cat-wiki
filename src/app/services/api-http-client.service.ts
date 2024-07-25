@@ -23,14 +23,6 @@ export class ApiHttpClientService {
     })
   }
 
-  fetchBreed(): Observable<Breed> {
-    return this.http.get<Breed>(this.base_url + 'breeds', {
-      headers: {
-        "x-api-key": environment.apiKey
-      }
-    })
-  }
-
   getBreedBySearchTerm(searchTerm: string): Observable<Breed[]> {
     return this.http.get<Breed[]>(this.base_url + `breeds/search?q=${searchTerm}`, {
       headers: {
