@@ -1,5 +1,4 @@
 import { Component, Input, inject } from '@angular/core';
-//import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { BubbleComponent } from '../bubble/bubble.component';
 import { ApiHttpClientService } from '../../services/api-http-client.service';
