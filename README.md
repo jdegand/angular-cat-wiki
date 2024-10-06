@@ -1,6 +1,6 @@
 # Angular Cat Wiki
 
-This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devchallenges-cat-wiki) to use Angular and Angular SSR.
+This is a conversion of my [Next Cat Wiki app](https://github.com/jdegand/devchallenges-cat-wiki) to use Angular and Angular SSR.  It is also a solution to a [DevChallenges challenge](https://web.archive.org/web/20231130034437/https://legacy.devchallenges.io/challenges/f4NJ53rcfgrP6sBMD2jt).
 
 ## Built With
 
