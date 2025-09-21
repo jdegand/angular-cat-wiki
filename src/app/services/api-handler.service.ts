@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment.development';
 })
 export class ApiHandlerService {
 
-  private base_url = 'https://api.thecatapi.com/v1/';
+  private readonly base_url = 'https://api.thecatapi.com/v1/';
 
   async fetchBreeds() {
     const data = await fetch(this.base_url + 'breeds', {

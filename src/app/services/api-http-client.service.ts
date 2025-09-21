@@ -11,7 +11,7 @@ import Breed2 from '../interfaces/Breed2';
 })
 export class ApiHttpClientService {
 
-  private base_url = 'https://api.thecatapi.com/v1/';
+  private readonly base_url = 'https://api.thecatapi.com/v1/';
 
   http = inject(HttpClient)
 

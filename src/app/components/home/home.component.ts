@@ -1,4 +1,4 @@
-import { Component, ViewChild, inject } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 //import { ApiHandlerService } from '../../services/api-handler.service';
@@ -15,14 +15,14 @@ import { NgClass } from '@angular/common';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   breeds: Breed[] = [];
   featuredBreeds: Breed[] = [];
   
   //apiHandlerService = inject(ApiHandlerService);
 
-  apiHttpClientService = inject(ApiHttpClientService);
+  readonly apiHttpClientService = inject(ApiHttpClientService);
 
   title = inject(Title);
 
