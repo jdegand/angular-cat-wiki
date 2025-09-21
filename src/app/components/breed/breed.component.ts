@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { BubbleComponent } from '../bubble/bubble.component';
 import { ApiHttpClientService } from '../../services/api-http-client.service';
@@ -14,7 +14,7 @@ import MergeMapResponse from '../../interfaces/MergeMapResponse';
   templateUrl: './breed.component.html',
   styleUrl: './breed.component.css'
 })
-export class BreedComponent {
+export class BreedComponent implements OnInit {
   @Input() name = '';
   breed: Breed2[] = [];
 
